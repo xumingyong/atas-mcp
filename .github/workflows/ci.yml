@@ -77,3 +77,25 @@ jobs:
               raise SystemExit(1)
           print('Emoji check passed: zero emojis found.')
           "
+
+build-dll:
+    name: Build ATAS McpBridge DLL
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Publish C# Addon
+        run: |
+          dotnet publish -c Release -o ./output
+
+      - name: Upload DLL Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ATAS.McpBridge-DLL
+          path: ./output/ATAS.McpBridge.dll
