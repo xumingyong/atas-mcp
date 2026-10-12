@@ -76,15 +76,12 @@ jobs:
                   print(f'Emoji violation: {v[0]}:{v[1]} U+{v[2]}')
               raise SystemExit(1)
           print('Emoji check passed: zero emojis found.')
-          "
+
       - name: Publish C# Addon
         run: |
           dotnet publish (Get-ChildItem -Recurse -Filter *.csproj).FullName -c Release -o ./output
 
-  build-dll:
-    name: Build ATAS McpBridge DLL
-    runs-on: windows-latest
-    steps:
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
