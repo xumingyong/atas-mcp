@@ -77,6 +77,9 @@ jobs:
               raise SystemExit(1)
           print('Emoji check passed: zero emojis found.')
           "
+      - name: Publish C# Addon
+        run: |
+          dotnet publish (Get-ChildItem -Recurse -Filter *.csproj).FullName -c Release -o ./output
 
   build-dll:
     name: Build ATAS McpBridge DLL
