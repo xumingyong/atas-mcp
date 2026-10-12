@@ -78,7 +78,7 @@ jobs:
           print('Emoji check passed: zero emojis found.')
           "
 
-build-dll:
+  build-dll:
     name: Build ATAS McpBridge DLL
     runs-on: windows-latest
     steps:
